@@ -1,5 +1,5 @@
 [package]
-name = "tomotui"
+name = "tomatui"
 version = "0.1.0"
 description = "A Pomodoro timer in terminal"
 authors = ["sudeeptarlekar <sudeeptarlekar@gmail.com>"]
