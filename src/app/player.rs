@@ -50,3 +50,32 @@ impl Widget for &Player {
             .render(area, buf);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use ratatui::style::Style;
+
+    #[test]
+    fn draw() {
+        let player = Player::default();
+        let mut buffer = Buffer::empty(Rect::new(0, 0, 50, 4));
+
+        player.render(buffer.area, &mut buffer);
+
+        let mut expected = Buffer::with_lines(vec![
+            "┏Player━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓",
+            "┃                      todo!                     ┃",
+            "┃                                                ┃",
+            "┗━━━━[Play/Pause Space] [Next n] [Previous p]━━━━┛",
+        ]);
+
+        let key_style = Style::new().bold().blue();
+
+        expected.set_style(Rect::new(17, 3, 5, 4), key_style);
+        expected.set_style(Rect::new(30, 3, 1, 4), key_style);
+        expected.set_style(Rect::new(43, 3, 1, 4), key_style);
+
+        assert_eq!(buffer, expected);
+    }
+}

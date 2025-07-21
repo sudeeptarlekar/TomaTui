@@ -56,3 +56,32 @@ impl Widget for &Timer {
             .render(area, buf);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use color_eyre::owo_colors::OwoColorize;
+    use ratatui::style::Style;
+
+    #[test]
+    fn draw() {
+        let timer = Timer::default();
+        let mut buf = Buffer::empty(Rect::new(0, 0, 50, 4));
+        timer.render(buf.area, &mut buf);
+
+        let key_style = Style::new().bold().blue();
+
+        let mut expected = Buffer::with_lines(vec![
+            "┏Timer━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓",
+            "┃                  Coming Soon!                  ┃",
+            "┃                                                ┃",
+            "┗━━━━[Start/Stop s] [Break b] [Short/Long l]━━━━━┛",
+        ]);
+
+        expected.set_style(Rect::new(17, 3, 1, 4), key_style);
+        expected.set_style(Rect::new(27, 3, 1, 4), key_style);
+        expected.set_style(Rect::new(42, 3, 1, 4), key_style);
+
+        assert_eq!(buf, expected);
+    }
+}
