@@ -31,11 +31,12 @@ impl Widget for &Player {
         let title = Line::raw("Player");
         let instructions = Line::from(vec![
             "[Play/Pause ".into(),
-            "Space] ".blue().bold(),
-            "[Next ".into(),
-            "n] ".blue().bold(),
-            "[Previous ".into(),
-            "p]".blue().bold(),
+            "Space".blue().bold(),
+            "] [Next ".into(),
+            "n".blue().bold(),
+            "] [Previous ".into(),
+            "p".blue().bold(),
+            "]".into(),
         ]);
         let block = Block::new()
             .borders(Borders::all())

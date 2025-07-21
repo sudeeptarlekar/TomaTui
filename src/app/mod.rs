@@ -1,3 +1,4 @@
+pub mod channel;
 pub mod player;
 pub mod timer;
 pub mod todo;
@@ -9,6 +10,7 @@ use ratatui::Frame;
 use ratatui::layout::{Constraint, Direction, Layout};
 use ratatui::widgets::{Block, Borders, Paragraph};
 
+use channel::ChannelList;
 use player::Player;
 use timer::Timer;
 use todo::ToDo;
@@ -20,6 +22,7 @@ pub struct App {
     pub todo_list: ToDo,
     pub timer: Timer,
     pub player: Player,
+    pub channels: ChannelList,
 }
 
 impl App {
@@ -59,11 +62,6 @@ impl App {
         self.player.draw(frame, inner_layouts[0]);
         self.timer.draw(frame, inner_layouts[1]);
         self.todo_list.draw(frame, outer_layouts[1]);
-        frame.render_widget(
-            Paragraph::new("Channel List")
-                .centered()
-                .block(Block::new().borders(Borders::all())),
-            inner_layouts[2],
-        );
+        self.channels.draw(frame, inner_layouts[2]);
     }
 }

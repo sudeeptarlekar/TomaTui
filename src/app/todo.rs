@@ -42,11 +42,12 @@ impl Widget for &ToDo {
 
         let instructions = Line::from(vec![
             "[Create ".into(),
-            "a] ".bold().green(),
-            "[Delete ".into(),
-            "d] ".bold().red(),
-            "[Mark ".into(),
-            "m]".bold().blue(),
+            "a".bold().green(),
+            "] [Delete ".into(),
+            "d".bold().red(),
+            "] [Mark ".into(),
+            "m".bold().blue(),
+            "]".into(),
         ]);
 
         let block = Block::bordered()

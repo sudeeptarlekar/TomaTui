@@ -36,11 +36,12 @@ impl Widget for &Timer {
         let title = Line::raw("Timer");
         let instructions = Line::from(vec![
             "[Start/Stop ".into(),
-            "s] ".bold().blue(),
-            "[Break ".into(),
-            "b] ".bold().blue(),
-            "[Short/Long ".into(),
-            "l]".bold().blue(),
+            "s".bold().blue(),
+            "] [Break ".into(),
+            "b".bold().blue(),
+            "] [Short/Long ".into(),
+            "l".bold().blue(),
+            "]".into(),
         ]);
 
         let block = Block::new()
