@@ -13,4 +13,4 @@ future-utils = "0.3"
 ratatui = "0.29.0"
 reqwest = { version = "0.12", features = ["stream"] }
 rodio = "0.21"
-tokio = { version = "1.46", features = ["full"] }
+tokio = { version = "1.47", features = ["full"] }
